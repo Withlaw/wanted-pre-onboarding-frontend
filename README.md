@@ -1,5 +1,9 @@
 # Getting Started with Create React App
 
+-react router dom
+-styled components
+-axios
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
