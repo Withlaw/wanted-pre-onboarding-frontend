@@ -8,13 +8,14 @@ const config = {
   baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${accessToken}`,
+    ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
   },
   timeout: 5000,
 };
 const axiosInstance = axios.create(config);
 const axiosAuthInterceptor = axiosInstance.interceptors.request.use(config => {
-  if (!accessToken) return config;
+  if (config.headers.Authorization || !accessToken) return config;
+  // accessToken이 존재하지만 Authorization이 없을때 Authorization 헤더 삽입
   config.headers.Authorization = `Bearer ${accessToken}`;
   return config;
 }, undefined);
