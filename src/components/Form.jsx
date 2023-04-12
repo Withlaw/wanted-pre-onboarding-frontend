@@ -46,7 +46,8 @@ export const Notice = styled.div`
   margin-top: 10px;
 
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  justify-content: space-between;
 
   a {
     color: #0074cc;
