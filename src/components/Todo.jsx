@@ -7,7 +7,6 @@ const Todo = ({
   deleteHandler,
   modifySubmitHandler,
 }) => {
-  console.log("todo", props);
   const [isModifying, setIsModifying] = useState(false);
   const [todoModify, setTodoModify] = useState(props.todo);
 

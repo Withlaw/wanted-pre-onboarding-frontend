@@ -47,13 +47,12 @@ const Todolist = () => {
       await deleteTodo(id);
       setTodos(prev => prev.filter(el => el.id !== id));
     } catch (err) {
-      console.log("투두 삭제 에러", err);
+      console.error("투두 삭제 에러", err);
     }
   };
 
   const modifySubmitHandler = async (id, todo, isCompleted) => {
     try {
-      console.log(todo);
       if (todo.trim() === "") return;
       const { data } = await putTodo(id, todo, isCompleted);
       setTodos(prev =>
@@ -74,7 +73,7 @@ const Todolist = () => {
           const { data } = await getTodos();
           setTodos(data);
         } catch (err) {
-          console.log("todolist load error", err);
+          console.error("todolist load error", err);
         }
       })();
     } else {
