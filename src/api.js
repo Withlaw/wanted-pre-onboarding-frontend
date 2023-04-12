@@ -8,7 +8,7 @@ const config = {
   baseURL: BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    Authorization: accessToken,
+    Authorization: `Bearer ${accessToken}`,
   },
   timeout: 5000,
 };

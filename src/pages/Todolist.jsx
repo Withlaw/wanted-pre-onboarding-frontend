@@ -18,10 +18,6 @@ const Todolist = () => {
   };
 
   const addTodoHandler = async () => {
-    /* use localstorage
-    const newTodos = [{ value: todo, done: false, id: Date.now() }, ...todos];
-    window.localStorage.setItem("todos", JSON.stringify(newTodos));
-    */
     try {
       if (todo.trim() === "") return;
       const { data } = await postTodo(todo);
@@ -33,15 +29,6 @@ const Todolist = () => {
   };
 
   const checkboxHandler = async (id, todo, isCompleted) => {
-    /* use localstorage
-    const elId = e.currentTarget.name;
-    const newTodos = todos.map(el => {
-      if (el.id !== +elId) return el;
-      return { ...el, isCompleted: !el.isCompleted };
-    });
-    window.localStorage.setItem("todos", JSON.stringify(newTodos));
-    setTodos(newTodos);
-    */
     try {
       const { data } = await putTodo(id, todo, isCompleted);
       setTodos(prev =>
@@ -56,10 +43,6 @@ const Todolist = () => {
   };
 
   const deleteHandler = async id => {
-    // const newTodos = todos.filter(el => el.id !== id);
-    // window.localStorage.setItem("todos", JSON.stringify(newTodos));
-    // setTodos(newTodos);
-
     try {
       await deleteTodo(id);
       setTodos(prev => prev.filter(el => el.id !== id));
@@ -69,14 +52,6 @@ const Todolist = () => {
   };
 
   const modifySubmitHandler = async (id, todo, isCompleted) => {
-    /* use localstorage
-    const newTodos = todos.map(el => {
-      if (el.id !== id) return el;
-      return { ...el, value: todo };
-    });
-    window.localStorage.setItem("todos", JSON.stringify(newTodos));
-    setTodos(newTodos);
-    */
     try {
       console.log(todo);
       if (todo.trim() === "") return;
@@ -94,10 +69,6 @@ const Todolist = () => {
 
   useEffect(() => {
     if (isLogin()) {
-      /* use localstorage
-      const todosFromLocalStorage = window.localStorage.getItem("todos");
-      todosFromLocalStorage && setTodos(JSON.parse(todosFromLocalStorage));
-      */
       (async () => {
         try {
           const { data } = await getTodos();

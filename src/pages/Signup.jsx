@@ -34,7 +34,7 @@ const Signup = () => {
       await postSignup({ email, password });
       navigation(ROUTE_PATH.SIGNIN);
     } catch (error) {
-      // 400 아이디 중복
+      // 400 아이디 중복?
       console.error("회원가입에러", error.message);
     }
   };
