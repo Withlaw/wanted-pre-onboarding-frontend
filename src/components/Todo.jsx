@@ -1,12 +1,13 @@
+import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-
 const Todo = ({
   props,
   checkboxHandler,
   deleteHandler,
   modifySubmitHandler,
 }) => {
+  console.log("todo", props);
   const [isModifying, setIsModifying] = useState(false);
   const [todoModify, setTodoModify] = useState(props.todo);
 
@@ -77,4 +78,5 @@ const Li = styled.li`
   justify-content: space-between;
 `;
 
-export default Todo;
+// export default  Todo;
+export default React.memo(Todo, (prev, next) => prev.props === next.props);
