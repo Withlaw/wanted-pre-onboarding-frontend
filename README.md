@@ -26,4 +26,4 @@ export const BASE_URL = "http://localhost:8000";
 
 ## 배포 링크
 
-https://grand-brioche-a7a8c2.netlify.app/todo
+https://wanted-pre-onboarding-withlaw.netlify.app/todo
