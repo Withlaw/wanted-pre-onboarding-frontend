@@ -13,7 +13,7 @@ const Todo = ({
   const inputBoxHandler = e => setTodoModify(e.currentTarget.value);
 
   const modifyHandler = () => {
-    // setTodoModify(props.todo);
+    setTodoModify(props.todo);
     setIsModifying(true);
   };
 
