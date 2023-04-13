@@ -27,7 +27,7 @@ const Signin = () => {
     setPasswordValidCheck(checkPasswordValidation(e.currentTarget.value));
   };
 
-  const onSubmitHandler = async e => {
+  const onSubmitHandlerEmailPassword = async e => {
     e.preventDefault();
     try {
       await postSignin({ email, password });
@@ -47,7 +47,7 @@ const Signin = () => {
     <Page>
       <Title>로 그 인</Title>
       <Main>
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandlerEmailPassword}>
           <Wrapper>
             <label>Email</label>
             <input

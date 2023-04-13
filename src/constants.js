@@ -9,6 +9,8 @@ export const URL_PATH = {
 
 export const ROUTE_PATH = {
   SIGNIN: "/signin",
-  SIGNUP: "signup",
+  SIGNUP: "/signup",
   TODO: "/todo",
 };
+
+export const BLUE_COLOR = "#0074cc";

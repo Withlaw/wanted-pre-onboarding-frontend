@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BLUE_COLOR } from "../constants";
 
 export const Page = styled.main`
   height: 100vh;
@@ -50,6 +51,6 @@ export const Notice = styled.div`
   justify-content: space-between;
 
   a {
-    color: #0074cc;
+    color: ${BLUE_COLOR};
   }
 `;

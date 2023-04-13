@@ -13,11 +13,11 @@ const Todolist = () => {
 
   const navigation = useNavigate();
 
-  const toDoHandler = e => {
+  const onChangeHandlerTodo = e => {
     setTodo(e.currentTarget.value);
   };
 
-  const addTodoHandler = async () => {
+  const onClickHandlerAddTodo = async () => {
     try {
       if (todo.trim() === "") return;
       const { data } = await postTodo(todo);
@@ -28,7 +28,7 @@ const Todolist = () => {
     }
   };
 
-  const checkboxHandler = async (id, todo, isCompleted) => {
+  const onChangeHandlerCheckbox = async (id, todo, isCompleted) => {
     try {
       const { data } = await putTodo(id, todo, isCompleted);
       setTodos(prev =>
@@ -42,7 +42,7 @@ const Todolist = () => {
     }
   };
 
-  const deleteHandler = async id => {
+  const onClickHandlerDelete = async id => {
     try {
       await deleteTodo(id);
       setTodos(prev => prev.filter(el => el.id !== id));
@@ -51,7 +51,7 @@ const Todolist = () => {
     }
   };
 
-  const modifySubmitHandler = async (id, todo, isCompleted) => {
+  const onClicktHandlerModify = async (id, todo, isCompleted) => {
     try {
       if (todo.trim() === "") return;
       const { data } = await putTodo(id, todo, isCompleted);
@@ -89,9 +89,12 @@ const Todolist = () => {
         <input
           data-testid="new-todo-input"
           value={todo}
-          onChange={toDoHandler}
+          onChange={onChangeHandlerTodo}
         />
-        <button data-testid="new-todo-add-button" onClick={addTodoHandler}>
+        <button
+          data-testid="new-todo-add-button"
+          onClick={onClickHandlerAddTodo}
+        >
           추가
         </button>
         <ul>
@@ -99,9 +102,9 @@ const Todolist = () => {
             <Todo
               key={el.id}
               props={el}
-              checkboxHandler={checkboxHandler}
-              deleteHandler={deleteHandler}
-              modifySubmitHandler={modifySubmitHandler}
+              onChangeHandlerCheckbox={onChangeHandlerCheckbox}
+              onClickHandlerDelete={onClickHandlerDelete}
+              onClicktHandlerModify={onClicktHandlerModify}
             />
           ))}
         </ul>

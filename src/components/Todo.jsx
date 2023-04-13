@@ -1,23 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
+
 const Todo = ({
   props,
-  checkboxHandler,
-  deleteHandler,
-  modifySubmitHandler,
+  onChangeHandlerCheckbox,
+  onClickHandlerDelete,
+  onClicktHandlerModify,
 }) => {
   const [isModifying, setIsModifying] = useState(false);
   const [todoModify, setTodoModify] = useState(props.todo);
 
   const inputBoxHandler = e => setTodoModify(e.currentTarget.value);
 
-  const modifyHandler = () => {
+  const onClickHandlerModifyBtn = () => {
     setTodoModify(props.todo);
     setIsModifying(true);
   };
 
-  const modifyCancelHandler = () => {
+  const onClickHandlerModifyCancel = () => {
     setTodoModify(props.todo);
     setIsModifying(false);
   };
@@ -29,7 +30,7 @@ const Todo = ({
           type="checkbox"
           checked={props.isCompleted}
           onChange={() =>
-            checkboxHandler(props.id, props.todo, !props.isCompleted)
+            onChangeHandlerCheckbox(props.id, props.todo, !props.isCompleted)
           }
           name={props.id}
         />
@@ -45,24 +46,27 @@ const Todo = ({
           <button
             data-testid="submit-button"
             onClick={() => {
-              modifySubmitHandler(props.id, todoModify, props.isCompleted);
+              onClicktHandlerModify(props.id, todoModify, props.isCompleted);
               setIsModifying(false);
             }}
           >
             제출
           </button>
-          <button data-testid="cancel-button" onClick={modifyCancelHandler}>
+          <button
+            data-testid="cancel-button"
+            onClick={onClickHandlerModifyCancel}
+          >
             취소
           </button>
         </div>
       ) : (
         <div>
-          <button data-testid="modify-button" onClick={modifyHandler}>
+          <button data-testid="modify-button" onClick={onClickHandlerModifyBtn}>
             수정
           </button>
           <button
             data-testid="delete-button"
-            onClick={() => deleteHandler(props.id)}
+            onClick={() => onClickHandlerDelete(props.id)}
           >
             삭제
           </button>
