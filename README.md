@@ -45,7 +45,7 @@ export const BASE_URL = "http://localhost:8000";
 │ 
 ├── constants.js  // 경로, 색상 등 상수
 │ 
-└─── helpers.js   // 유효성검사 등 유틸 함수
+└── helpers.js   // 유효성검사 등 유틸 함수
 ```
 
 ## 코딩 컨벤션
