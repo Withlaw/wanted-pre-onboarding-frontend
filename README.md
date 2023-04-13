@@ -7,8 +7,7 @@
 
 https://wanted-pre-onboarding-withlaw.netlify.app/todo
 
-## 사용한 라이브러리 목록:
-
+## 사용한 라이브러리 목록
 - react-router
 - styled-components
 - axios
