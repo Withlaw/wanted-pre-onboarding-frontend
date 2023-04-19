@@ -82,4 +82,5 @@ const Li = styled.li`
 `;
 
 // export default  Todo;
-export default React.memo(Todo, (prev, next) => prev.props === next.props);
+// export default React.memo(Todo, (prev, next) => prev.props === next.props);
+export default React.memo(Todo);

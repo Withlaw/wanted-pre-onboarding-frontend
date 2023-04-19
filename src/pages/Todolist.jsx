@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Main, Page, Title } from "../components/Form";
@@ -28,7 +28,7 @@ const Todolist = () => {
     }
   };
 
-  const onChangeHandlerCheckbox = async (id, todo, isCompleted) => {
+  const onChangeHandlerCheckbox = useCallback(async (id, todo, isCompleted) => {
     try {
       const { data } = await putTodo(id, todo, isCompleted);
       setTodos(prev =>
@@ -40,18 +40,18 @@ const Todolist = () => {
     } catch (err) {
       console.error("체크박스 에러", err);
     }
-  };
+  }, []);
 
-  const onClickHandlerDelete = async id => {
+  const onClickHandlerDelete = useCallback(async id => {
     try {
       await deleteTodo(id);
       setTodos(prev => prev.filter(el => el.id !== id));
     } catch (err) {
       console.error("투두 삭제 에러", err);
     }
-  };
+  }, []);
 
-  const onClicktHandlerModify = async (id, todo, isCompleted) => {
+  const onClicktHandlerModify = useCallback(async (id, todo, isCompleted) => {
     try {
       if (todo.trim() === "") return;
       const { data } = await putTodo(id, todo, isCompleted);
@@ -64,7 +64,7 @@ const Todolist = () => {
     } catch (err) {
       console.error("투두 수정 에러", err);
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (isLogin()) {
