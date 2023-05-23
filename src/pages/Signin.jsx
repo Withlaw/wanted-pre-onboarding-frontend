@@ -23,11 +23,11 @@ const Signin = () => {
   const navigation = useNavigate();
 
   const onChangeHandlerEmail = e => {
-    inputChange(e);
+    inputChange(e.currentTarget);
     setEmailValid(checkEmailValidation(e.currentTarget.value));
   };
   const onChangeHandlerPassword = e => {
-    inputChange(e);
+    inputChange(e.currentTarget);
     setPasswordValidCheck(checkPasswordValidation(e.currentTarget.value));
   };
 

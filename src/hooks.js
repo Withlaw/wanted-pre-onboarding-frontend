@@ -3,10 +3,10 @@ import { useCallback, useState } from "react";
 export function useInput(initialState) {
   const [value, setValue] = useState(initialState);
   const onChange = useCallback(
-    e => {
+    action => {
       setValue({
         ...value,
-        [e.target.name]: e.target.value,
+        [action.name]: action.value,
       });
     },
     [value]
