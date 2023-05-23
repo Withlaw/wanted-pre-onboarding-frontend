@@ -9,21 +9,25 @@ import {
   isLogin,
 } from "../helpers";
 import { ROUTE_PATH } from "../constants";
+import { useInput } from "../hooks";
 
 const Signin = () => {
-  const [email, setEmail] = useState("");
+  const {
+    value: { email, password },
+    onChange: inputChange,
+  } = useInput({ email: "", password: "" });
+
   const [emailValid, setEmailValid] = useState(true);
-  const [password, setPassword] = useState("");
   const [passwordValid, setPasswordValidCheck] = useState(true);
 
   const navigation = useNavigate();
 
   const onChangeHandlerEmail = e => {
-    setEmail(e.currentTarget.value);
+    inputChange(e);
     setEmailValid(checkEmailValidation(e.currentTarget.value));
   };
   const onChangeHandlerPassword = e => {
-    setPassword(e.currentTarget.value);
+    inputChange(e);
     setPasswordValidCheck(checkPasswordValidation(e.currentTarget.value));
   };
 
@@ -52,6 +56,7 @@ const Signin = () => {
             <label>Email</label>
             <input
               type={"email"}
+              name="email"
               value={email}
               onChange={onChangeHandlerEmail}
               data-testid="email-input"
@@ -63,6 +68,7 @@ const Signin = () => {
             <label>Password</label>
             <input
               type={"password"}
+              name="password"
               value={password}
               onChange={onChangeHandlerPassword}
               data-testid="password-input"
