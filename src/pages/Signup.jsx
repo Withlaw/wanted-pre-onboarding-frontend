@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 
 import { Button, Main, Notice, Page, Title, Wrapper } from "../components/Form";
 import { postSignup } from "../api";
@@ -38,7 +38,7 @@ const Signup = () => {
       navigation(ROUTE_PATH.SIGNIN);
     } catch (error) {
       // 400 아이디 중복?
-      console.error("회원가입에러", error.message);
+      console.error("회원가입에러", error);
     }
   };
 
